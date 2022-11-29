@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   resources :flights, only: [:index, :show]
   # Defines the root path route ("/")
   # root "articles#index"
+  root to: "flights#index"
 end
