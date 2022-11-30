@@ -6,7 +6,9 @@
     flex-direction: column;
     align-items: center;
 }
-.flightsList {
+.flightsList > form {
+    display: flex;
+    justify-content: center;
 }
 .flightIndividual {
     display: flex;
