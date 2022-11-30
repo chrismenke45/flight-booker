@@ -2,15 +2,12 @@
 <%= render :partial => "shared/flight_display", :locals => { :flight => @flight } %>
 <%= form_with model: @booking do |form| %>
     <%= form.hidden_field :flight_id, value: @flight.id %>
-    <% @passenger_count.times do |time| %>
-        <%= form.fields_for :passengers do |passengers_form| %>
-            <div class="form_group">
-                <%= passengers_form.label :name %>
-                <%= passengers_form.text_field :name %>
-                <%= passengers_form.label :email %>
-                <%= passengers_form.text_field :email %>
+    <%= form.fields_for :passengers do |passengers_form| %>
+          <%= passengers_form.hidden_field :id, value: nil %>
+          <div class='formGroup'>
+              <%= passengers_form.text_field :name, class: "", placeholder: "Passenger Name" %>
+              <%= passengers_form.text_field :email, class: "", placeholder: "Passenger Email" %>
             </div>
         <% end %>
-    <% end %>
     <%= form.submit "Book Flight" %>
 <% end %>
