@@ -6,6 +6,7 @@ class Flight < ApplicationRecord
   belongs_to :arrival_airport, class_name: "Airport"
 
   has_many :bookings
+  has_many :passengers, through: :bookings
 
   scope :day_of, ->(date) { where("departure_time >= ? AND departure_time <=?", date.change(hour: 0), date.change(hour: 23, min: 59, sec: 59)) }
 end
