@@ -1,0 +1,13 @@
+<div class="flightIndividual">
+    <div class="flexVertCenter" >
+        <h3><%= flight.departure_airport.code %></h3>
+        <span><%= flight.departure_airport.name %></span>
+        <h3><%= flight.departure_time.strftime("%m/%d/%Y at %I:%M%p") %></h3>
+    </div>
+    <span>to</span>
+    <div class="flexVertCenter">
+        <h3><%= flight.arrival_airport.code %></h3>
+        <span><%= flight.arrival_airport.name %></span>
+        <h3><%= flight.arrival_time.strftime("%m/%d/%Y at %I:%M%p") %></h3>
+    </div>
+</div>

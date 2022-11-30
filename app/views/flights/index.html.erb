@@ -1,0 +1,20 @@
+<h1>Flights</h1>
+<% puts @departure_options %>
+
+<%= form_with model: @flight, url: flights_path, method: :get do |form| %>
+    <%= form.label :departure_airport, "Origin:" %>
+    <%= form.select :departure_airport, @airport_options %>
+    <%= form.label :arrival_airport, "Destination:" %>
+    <%= form.select :arrival_airport, @airport_options %>
+    <%= form.label :date, "Departure Date:" %>
+    <%= form.select :date, @date_options %>
+    <%= form.label :passengers, "Passengers:" %>
+    <%= form.select :passengers, [1, 2, 3, 4] %>
+    <%= form.submit "Find Flight" %>
+
+<% end %>
+<div class="flightsList flexVertCenter">
+<% @flights.each do |flight| %>
+    <%= render :partial => "shared/flight_display", :locals => { :flight => flight } %>
+<% end %>
+</div>
