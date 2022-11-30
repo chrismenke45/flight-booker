@@ -1,15 +1,14 @@
 <h1>Flights</h1>
-<% puts @departure_options %>
 
-<%= form_with model: @flight, url: flights_path, method: :get do |form| %>
+<%= form_with model: @flight_query, url: flights_path, method: :get do |form| %>
     <%= form.label :departure_airport, "Origin:" %>
-    <%= form.select :departure_airport, @airport_options %>
+    <%= form.select :departure_airport, @departure_options.unshift(["Origin", "0"]), :disabled => "0", :selected => "0" %>
     <%= form.label :arrival_airport, "Destination:" %>
-    <%= form.select :arrival_airport, @airport_options %>
+    <%= form.select :arrival_airport, @arrival_options.unshift(["Destination", "0"]), :disabled => "0", :selected => "0" %>
     <%= form.label :date, "Departure Date:" %>
-    <%= form.select :date, @date_options %>
+    <%= form.select :date, @date_options, :disabled => "0", :selected => "0" %>
     <%= form.label :passengers, "Passengers:" %>
-    <%= form.select :passengers, [1, 2, 3, 4] %>
+    <%= form.select :passengers, ["1", "2", "3", "4"] %>
     <%= form.submit "Find Flight" %>
 
 <% end %>
