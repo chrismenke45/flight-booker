@@ -10,7 +10,7 @@ class BookingsController < ApplicationController
     #puts booking_params
     @booking = Booking.new(booking_params)
     if @booking.save
-      flash.notice = "Flight #{@booking.flight.formatted_flight_number} successfully booked! A confirmation email has been sent to each passenger."
+      flash.notice = "Flight #{@booking.flight_id} successfully booked! A confirmation email has been sent to each passenger."
       redirect_to booking_path(@booking.id)
     else
       flash.now[:alert] = ""
@@ -28,7 +28,7 @@ class BookingsController < ApplicationController
   end
 
   def show
-    @booking = Booking.find(params[:id])
+    @booking = Booking.includes(:flight, :passengers).find(params[:id])
     if @booking
       render :show
     else

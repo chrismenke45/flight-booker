@@ -1,2 +1,8 @@
-<h1>Bookings#show</h1>
-<p>Find me in app/views/bookings/show.html.erb</p>
+<h1>Your Booking</h1>
+<h3>Passengers:</h3>
+<ul>
+<% @booking.passengers.each do |passenger| %>
+    <li><%= passenger.name %></li>
+<% end %>
+</ul>
+<%= render :partial => "shared/flight_display", :locals => { :flight => @booking.flight } %>
